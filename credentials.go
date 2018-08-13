@@ -1,9 +1,14 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
-	"regexp"
-	"io/ioutil"
 	"encoding/json"
+	"io/ioutil"
+	"regexp"
 )
 
 type SecurityCredential struct {

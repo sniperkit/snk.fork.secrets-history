@@ -1,8 +1,14 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
-	"strings"
 	"errors"
+	"strings"
+
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing/object"
 )
@@ -12,7 +18,7 @@ func hashesToInspect(repository git.Repository, from, to string) ([]string, erro
 	var err error
 
 	startCommit, _ := log.Next()
-	for ! strings.HasPrefix(startCommit.Hash.String(), from) {
+	for !strings.HasPrefix(startCommit.Hash.String(), from) {
 		startCommit, err = log.Next()
 
 		if err != nil {
@@ -36,7 +42,7 @@ func hashesToInspect(repository git.Repository, from, to string) ([]string, erro
 func getAllHashesButInitial(initialCommit object.Commit, commits object.CommitIter) []string {
 	start := []string{initialCommit.Hash.String()}
 	_, hashes := takeCommitsUtil(commits, func(commit object.Commit) bool {
-		return ! isInitialCommit(commit)
+		return !isInitialCommit(commit)
 	})
 
 	return append(start, hashes...)
@@ -45,7 +51,7 @@ func getAllHashesButInitial(initialCommit object.Commit, commits object.CommitIt
 func getAllHashesUntil(initialCommit object.Commit, commits object.CommitIter, until string) []string {
 	start := []string{initialCommit.Hash.String()}
 	currentCommit, hashes := takeCommitsUtil(commits, func(commit object.Commit) bool {
-		return ! strings.HasPrefix(commit.Hash.String(), until)
+		return !strings.HasPrefix(commit.Hash.String(), until)
 	})
 
 	hashes = append(hashes, currentCommit.Hash.String())

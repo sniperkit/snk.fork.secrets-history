@@ -1,6 +1,13 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
-import "sort"
+import (
+	"sort"
+)
 
 func testEq(a, b []string) bool {
 

@@ -1,7 +1,13 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
 	"testing"
+
 	"gopkg.in/src-d/go-git.v4"
 )
 
@@ -139,7 +145,7 @@ func TestDirtyCommitsBringsCommitsWithSecretsAddedAndRemoved(t *testing.T) {
 	dirtyCommits := getDirtyCommits(*repo, commits, patterns)
 
 	commitsMatches := testEqInAnyOrder(expectedDirtyCommits, dirtyCommits)
-	if ! commitsMatches {
+	if !commitsMatches {
 		t.Errorf("Wrong dirtycommits")
 	}
 }

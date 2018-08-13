@@ -1,3 +1,6 @@
+# Sniperkit-Bot
+# - Status: analyzed
+
 package: secrets-history
 import:
 - package: gopkg.in/src-d/go-git.v4.*

@@ -1,12 +1,18 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
 	"regexp"
+	"strings"
+	"sync"
+
 	"gopkg.in/src-d/go-git.v4"
 	"gopkg.in/src-d/go-git.v4/plumbing"
 	"gopkg.in/src-d/go-git.v4/plumbing/object"
-	"strings"
-	"sync"
 )
 
 func getStartCommit(head plumbing.Reference, from string) string {

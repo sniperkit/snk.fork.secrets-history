@@ -1,13 +1,19 @@
+/*
+Sniperkit-Bot
+- Status: analyzed
+*/
+
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
+
 	"gopkg.in/src-d/go-git.v4"
-	"encoding/json"
 )
 
 func main() {
@@ -23,7 +29,7 @@ func main() {
 		printDefaultPatternFile()
 	}
 
-	if ! *useDefaultPatterns && *patternsDirectory == "" {
+	if !*useDefaultPatterns && *patternsDirectory == "" {
 		printErrorAndStop(errors.New("either use default patterns or provide custom ones"))
 	}
 
@@ -97,7 +103,7 @@ func repositoryExists(path string) error {
 
 	if err != nil {
 		return err
-	} else if ! fileExists {
+	} else if !fileExists {
 		return errors.New(fmt.Sprintf("Path given is not a valid directory: %s", path))
 	}
 
